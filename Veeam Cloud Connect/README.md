@@ -6,3 +6,6 @@ To streamline support operations for large Veeam Cloud Connect environments—wh
 
 ## How it works
 The script operates by scanning the designated local directory to determine the current number of existing log bundles. If three log bundles are already present, it automatically identifies and removes the oldest to maintain the defined retention policy. It then proceeds to generate fresh logs from the configured components—such as Veeam Backup Servers, Proxies, and WAN Accelerators—using parameters defined within the script. Once collected, the logs are compressed, renamed for consistency, and stored locally for support use.
+
+## Troubleshooting
+In certain cases, Veeam is unable to purge files due to excessively long file paths or filenames. To address this limitation, a secondary PowerShell script was developed to recursively traverse a specified directory, renaming files and folders to shorter, standardized names. Once all file paths are within acceptable length constraints, the script proceeds to safely delete the targeted files, ensuring successful cleanup without manual intervention.
